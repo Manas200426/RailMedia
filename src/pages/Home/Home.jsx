@@ -8,14 +8,14 @@ import Rightbar from '../../Components/rightbar/Rightbar'
 const Home = () => {
   return (
     <div className="home">
-        <Navbar/>
-        <div className="homeContainer">
-          <Sidebar/>
-          <Feed/>
-          <Rightbar/>
-        </div>
+      <Navbar />
+      <div className="homeContainer">
+        <Sidebar />
+        <Feed />
+        <Rightbar />
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default Home

@@ -1,72 +1,123 @@
-import React from 'react'
-import "./ProfileRightBar.css"
-import { Link } from 'react-router-dom'
+import { doc, onSnapshot } from "firebase/firestore";
+import React, { useContext, useState } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthContext";
+import { db } from "../../firebase";
+import "./ProfileRightBar.css";
 
 const ProfileRightBar = () => {
+  const [getUserInfo, setGetUserInfo] = useState({});
+  const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const getInfo = () => {
+      const unSub = onSnapshot(doc(db, "users", currentUser.uid), (doc) => {
+        setGetUserInfo(doc.data());
+      });
+      return () => {
+        unSub();
+      };
+    };
+    currentUser.uid && getInfo();
+  }, [currentUser.uid]);
+
+  console.log(getUserInfo);
+
   return (
-    <div className='profileRightBar'>
-        <div className="ProfileRightBarHeading">
-            <span className="ProfileRightBarTitle">
-                User Information
-            </span>
-            <Link to="/profile/userId/edit" style={{textDecoration:"none"}}>
-            <span className="editButton">edit button</span>
-            </Link>
-           
-        </div>
+    <div className="profileRightBar">
+      <div className="profileRightBarHeading">
+        <span className="profileRightBarTitle"> User Information</span>
+        <Link
+          to={`/profile/${currentUser.displayName}/edit`}
+          style={{ textDecoration: "none" }}
+        >
+          <span className="editButton">Edit Profile</span>
+        </Link>
+      </div>
 
-        <div className="profileRightBarInfo">
-            <div className="profileRightBarInfoItem">
-                <span className="profileRightBarInfoKey">Email:</span>
-                <span className="profileRightBarInfoValue">prayag@gmail.com</span>   
-            </div>
-            <div className="profileRightBarInfoItem">
-                <span className="profileRightBarInfoKey">Phone No:</span>
-                <span className="profileRightBarInfoValue">1234567893</span>   
-            </div>
-            <div className="profileRightBarInfoItem">
-                <span className="profileRightBarInfoKey">Address:</span>
-                <span className="profileRightBarInfoValue">Kalyan East</span>   
-            </div>
-            <div className="profileRightBarInfoItem">
-                <span className="profileRightBarInfoKey">Country:</span>
-                <span className="profileRightBarInfoValue">India</span>   
-            </div>
-            <div className="profileRightBarInfoItem">
-                <span className="profileRightBarInfoKey">Relationship:</span>
-                <span className="profileRightBarInfoValue">Married</span>   
-            </div>
+      <div className="profileRightBarInfo">
+        <div className="profileRightBarInfoItem">
+          <span className="profileRightBarInfoKey">Email: </span>
+          <span className="profileRightBarInfoValue">
+            {getUserInfo.email ? getUserInfo.email : currentUser.email}
+          </span>
         </div>
-        <h4 className="profileRightBarTitle">Close Friends</h4>
-        <h4 className="profileRightBarFollowings">
-            <div className="profileRightBarFollowing">
-                <img src="/assets/person/friend1.jpg" alt="" className="profileRightBarFollowingImg" />
-                <span className="profileRightBarFollowingName">Janet</span>
-            </div>
-            <div className="profileRightBarFollowing">
-                <img src="/assets/person/friend2.jpg" alt="" className="profileRightBarFollowingImg" />
-                <span className="profileRightBarFollowingName">Janet</span>
-            </div>
-            <div className="profileRightBarFollowing">
-                <img src="/assets/person/friend3.jpg" alt="" className="profileRightBarFollowingImg" />
-                <span className="profileRightBarFollowingName">Janet</span>
-            </div>
-            <div className="profileRightBarFollowing">
-                <img src="/assets/person/friend4.jpg" alt="" className="profileRightBarFollowingImg" />
-                <span className="profileRightBarFollowingName">Janet</span>
-            </div>
-            <div className="profileRightBarFollowing">
-                <img src="/assets/person/friend6.jpg" alt="" className="profileRightBarFollowingImg" />
-                <span className="profileRightBarFollowingName">Janet</span>
-            </div>
-            <div className="profileRightBarFollowing">
-                <img src="/assets/person/friend6.jpg" alt="" className="profileRightBarFollowingImg" />
-                <span className="profileRightBarFollowingName">Janet</span>
-            </div>
+        <div className="profileRightBarInfoItem">
+          <span className="profileRightBarInfoKey">Phone Number: </span>
+          <span className="profileRightBarInfoValue">{getUserInfo.phone}</span>
+        </div>
+        <div className="profileRightBarInfoItem">
+          <span className="profileRightBarInfoKey">Age: </span>
+          <span className="profileRightBarInfoValue">{getUserInfo.age}</span>
+        </div>
+        <div className="profileRightBarInfoItem">
+          <span className="profileRightBarInfoKey">Country: </span>
+          <span className="profileRightBarInfoValue">
+            {getUserInfo.country}
+          </span>
+        </div>
+        <div className="profileRightBarInfoItem">
+          <span className="profileRightBarInfoKey">Relationship: </span>
+          <span className="profileRightBarInfoValue">
+            {getUserInfo.relationship}
+          </span>
+        </div>
+      </div>
 
-        </h4>
+      <h4 className="profileRightBarTitle">Close Friends</h4>
+      <div className="profileRightBarFollowings">
+        <div className="profileRightBarFollowing">
+          <img
+            src="/assets/person/friend1.jpg"
+            alt=""
+            className="profileRightBarFollowingImg"
+          />
+          <span className="profileRightBarFollowingName">Janet</span>
+        </div>
+        <div className="profileRightBarFollowing">
+          <img
+            src="/assets/person/friend2.jpg"
+            alt=""
+            className="profileRightBarFollowingImg"
+          />
+          <span className="profileRightBarFollowingName">Isabella</span>
+        </div>
+        <div className="profileRightBarFollowing">
+          <img
+            src="/assets/person/friend3.jpg"
+            alt=""
+            className="profileRightBarFollowingImg"
+          />
+          <span className="profileRightBarFollowingName">Beverly</span>
+        </div>
+        <div className="profileRightBarFollowing">
+          <img
+            src="/assets/person/friend4.jpg"
+            alt=""
+            className="profileRightBarFollowingImg"
+          />
+          <span className="profileRightBarFollowingName">Glenna</span>
+        </div>
+        <div className="profileRightBarFollowing">
+          <img
+            src="/assets/person/friend5.jpg"
+            alt=""
+            className="profileRightBarFollowingImg"
+          />
+          <span className="profileRightBarFollowingName">Alexis</span>
+        </div>
+        <div className="profileRightBarFollowing">
+          <img
+            src="/assets/person/friend6.jpg"
+            alt=""
+            className="profileRightBarFollowingImg"
+          />
+          <span className="profileRightBarFollowingName">Kate</span>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProfileRightBar
+export default ProfileRightBar;

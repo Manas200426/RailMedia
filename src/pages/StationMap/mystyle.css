@@ -1,0 +1,21 @@
+.gridcont{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+}
+
+.button{
+    font-size:20px;
+    border: 1px solid orangered;
+    background-color: white;
+    border-radius: 15px;
+}
+.button:hover{
+    background:linear-gradient(90deg,orange,red);
+    color: white;
+}
+
+.disp{
+    display: flex;
+    justify-content: center;
+}

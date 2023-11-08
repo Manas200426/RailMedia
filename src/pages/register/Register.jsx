@@ -1,72 +1,139 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Register.css"
+import { doc, setDoc } from "firebase/firestore";
 import { DriveFolderUploadOutlined } from '@mui/icons-material'
-import { Link } from 'react-router-dom'
+import {  Link, useNavigate } from 'react-router-dom'
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {auth, db, storage} from "../../firebase"
+import {  ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const Register = () => {
+  const [img, setImg] = useState(null);
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    const displayName = e.target[0].value;
+    const email = e.target[1].value;
+    const password = e.target[2].value;
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+
+      const storageRef = ref(storage, "usersImages/" + displayName);
+
+      const uploadTask = uploadBytesResumable(storageRef, img);
+
+      uploadTask.on(
+        (error) => {
+          setError(true);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            await updateProfile(res.user, {
+              displayName,
+              photoURL: downloadURL,
+            });
+
+            await setDoc(doc(db, "users", res.user.uid), {
+              uid: res.user.uid,
+              displayName,
+              email,
+              photoURL: downloadURL,
+            });
+
+            await setDoc(doc(db, "usersPosts", res.user.uid), { messages: [] });
+            // console.log(res.user);
+          });
+        }
+      );
+    } catch (error) {
+      setError(true);
+    }
+    navigate("/login");
+  };
   return (
-    <div className='register'>
-        <div className="registerWrapper">
-            <div className="registerLeft">
-                <h3 className="registerLogo">RailMedia</h3>
-                <span className="registerDesc">
-                    Solve Problems Together on ReailMedia!
-                </span>
-            </div>
-            <div className="registerRight">
-                <div className="registerBox">
-                    <div className="top">
-                        <img src="/assets/profileCover/DefaultProfile.jpg"
-                         alt="" className="profileImg" />
-                         <div className="formInput">
-                            <label htmlFor="file" className='label'>
-                                Image: <DriveFolderUploadOutlined className='icon' /> 
-                                <input type="file" 
-                                name='file' id='file' 
-                                accept='.png,.jpeg,.jpg'
-                                style={{display:"none"}} />
-                            </label>
-                         </div>
-                    </div>
-                    <div className="bottom">
-                        <form  className="bottomBox">
-                            <input type="text" 
-                            placeholder='Username' 
-                            id='username' 
-                            className='registerInput' 
-                            required/>
-
-                              <input type="email" 
-                            placeholder='Email' 
-                            id='email' 
-                            className='registerInput' 
-                            required/>
-
-                              <input type="password" 
-                            placeholder='Password' 
-                            id='password' 
-                            className='registerInput' 
-                            required/>
-
-                              <input type="password" 
-                            placeholder='Confirm Password' 
-                            id='confirmPassword' 
-                            className='registerInput' 
-                            required/>
-
-                            <button type="submit" className="registerButton">Sign Up</button>
-                            <Link to="/login">
-                            <button className="loginRegisterButton">
-                                Log into Account
-                            </button>
-                            </Link>
-                        </form>
-                    </div>
-                </div>
-            </div>
+    <div className="register">
+      <div className="registerWrapper">
+        <div className="registerLeft">
+          <h3 className="registerLogo">FaceBook</h3>
+          <span className="registerDesc">
+            Connect with friends and the world around you on Facebook.
+          </span>
         </div>
+        <div className="registerRight">
+          <div className="registerBox">
+            <div className="top">
+              <img
+                src={
+                  img
+                    ? URL.createObjectURL(img)
+                    : "/assets/profileCover/DefaultProfile.jpg"
+                }
+                alt=""
+                className="profileImg"
+              />
+              <div className="formInput">
+                <label htmlFor="file">
+                  Image: <DriveFolderUploadOutlined className="icon" />
+                  <input
+                    type="file"
+                    name="file"
+                    id="file"
+                    accept=".png,.jpeg,.jpg"
+                    style={{ display: "none" }}
+                    onChange={(e) => setImg(e.target.files[0])}
+                  />
+                </label>
+              </div>
+            </div>
+            <div className="bottom">
+              <form onSubmit={handleRegister} className="bottomBox">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  id="displayName"
+                  className="registerInput"
+                  required
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  id="email"
+                  className="registerInput"
+                  required
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  id="password"
+                  className="registerInput"
+                  minLength={6}
+                  required
+                />
+                {/* <input
+                  type="password"
+                  placeholder="Confirm Password"
+                  id="confirmPasword"
+                  className="registerInput"
+                  required
+                /> */}
+                <button type="submit" className="registerButton">
+                  Sign Up
+                </button>
+                <Link to="/login">
+                  <button className="loginRegisterButton">
+                    Log into Account
+                  </button>
+                </Link>
+                {error && <span>Something went wrong</span>}
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default Register

@@ -1,55 +1,57 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import "./Navbar.css";
 import { Link } from 'react-router-dom';
+import { AuthContext } from "./../../Context/AuthContext"
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 const Navbar = () => {
-  return (
-    <div className="navbarContainer">
+    const { currentUser } = useContext(AuthContext);
+    return (
+      <div className="navbarContainer">
         <div className="navbarLeft">
-            <Link to="/" style={{textDecoration:"none"}}>
+          <Link to="/" style={{ textDecoration: "none" }}>
             <span className="logo">RailMedia</span>
-            </Link>
-            
+          </Link>
         </div>
-        <div className="navbarCentre">
-            <div className="searchBar">
-               <SearchIcon className="searchIcon"/>
-               <input type="text" 
-               placeholder='Search for post or video' 
-               className='searchInput'
-               />
-            </div>
+        <div className="navbarCenter">
+          <div className="searchBar">
+            <SearchIcon className="searchIcon" />
+            <input
+              type="text"
+              placeholder="Search for friends post or video"
+              className="searchInput"
+            />
+          </div>
         </div>
         <div className="navbarRight">
-            <div className="navbarLink">
-                <span className="navbarLinks">HomePage</span>
-                <span className="navbarLinks">TimeLine</span>
+          <div className="navbarLinks">
+            <span className="navbarLink">Homepage</span>
+            <span className="navbarLink">Timeline</span>
+          </div>
+          <div className="navbarIcons">
+            <div className="navbarIconItem">
+              <PersonIcon />
+              <span className="navbarIconBadge">2</span>
             </div>
-            <div className="navbarIcons">
-                <div className="navbarIconItem">
-                 <PersonIcon/>
-                 <span className="navbarIconBadge">2</span>
-                </div>
-                <div className="navbarIconItem">
-                 <ChatBubbleIcon/>
-                 <span className="navbarIconBadge">10</span>
-                </div>
-                <div className="navbarIconItem">
-                 <NotificationsActiveIcon/>
-                 <span className="navbarIconBadge">8</span>
-                </div>
+            <div className="navbarIconItem">
+              <ChatBubbleIcon />
+              <span className="navbarIconBadge">10</span>
             </div>
-            <Link to="/profile/userId">
-            <img src="/assets/person/user.jpg" alt="" className="navbarImg" />
-            </Link>
-            
+            <div className="navbarIconItem">
+              <NotificationsActiveIcon />
+              <span className="navbarIconBadge">8</span>
+            </div>
+          </div>
+          <Link to={`/profile/${currentUser.displayName}`}>
+            <img src={currentUser.photoURL} alt="" className="navbarImg" />
+          </Link>
         </div>
-    </div>
-  )
-}
+      </div>
+    );
+  };
 
 export default Navbar

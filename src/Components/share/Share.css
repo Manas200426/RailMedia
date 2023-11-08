@@ -27,6 +27,7 @@
                 background-color: transparent;
                 font-size: 18px;
                 width: 80%;
+                height: 30px;   
 
                 &:focus{
                     outline: none;
@@ -35,7 +36,8 @@
             
         }
         .shareHr{
-            margin: 20px;
+            margin: 10px;
+            
         }
         .shareImgContainer{
             padding: 0 20px 10px 20px;
@@ -86,6 +88,13 @@
                     
                 }
             }
+        }
+        .emoji{
+            position: relative;
+            padding: 0 20px 10px 20px;
+            width: 100%;
+            top: 20px;
+            left: 70px;    
         }
     }
 }

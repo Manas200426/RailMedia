@@ -2,7 +2,7 @@
     display: flex;
 
     .profileRight{
-        flex: 10;
+        flex: 9.5;
 
         .profileCover{
             height: 320px;
@@ -36,10 +36,12 @@
 
             .profileInfoName{
                 font-size: 24px;
+                text-transform: capitalize;
+              
             }
 
             .profileInfoDesc{
-                font-weight: 100;
+                font-weight: 300;
             }
         }
 
@@ -75,12 +77,13 @@
                         height: 200px;
                         border-radius: 50%;
                         margin: 40px 0 40px 40px;
+                        object-fit: cover;
                     }
                 }
                 .right{
                     flex: 2;
 
-                     .form{
+                    .form{
                         display: flex;
                         flex-direction: column;
                         justify-content: space-between;
@@ -104,7 +107,6 @@
                                 font-size: 18px;
                                 padding: 5px;
                                 border: none;
-                                background-color:transparent ;
                                 background-color: transparent;
                                 border-bottom: 1px solid gray;
 
@@ -139,7 +141,7 @@
             .editprofileRightBottom{
                 .bottom{
                     .left{
-                        .img{
+                        img{
                             width: 150px;
                             height: 150px;
                             border-radius: 50%;
@@ -149,7 +151,7 @@
                     .right{
                         flex: 2;
 
-                        .form{
+                        form{
                             .formInput{
                                 width: 90%;
                             }
@@ -166,7 +168,7 @@
             .editprofileRightBottom{
                 .bottom{
                     .left{
-                        .img{
+                        img{
                             width: 100px;
                             height: 100px;
                             border-radius: 50%;
@@ -175,10 +177,9 @@
 
                     .right{
                   
-                        .form{
+                        form{
                             .formInput{
                                 width: 90%;
-                                
                             }
                         }
                     }

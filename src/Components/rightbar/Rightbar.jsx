@@ -1,16 +1,17 @@
-import React from 'react'
-import "./rightbar.css"
-import RightBarHome from '../rightbarhome/RightBarHome';
-import ProfileRightBar from '../profileRightBar/ProfileRightBar';
+import React from "react";
 
-const Rightbar = ({profile}) => {
+import "./rightbar.css";
+import ProfileRightBar from "./../profileRightBar/ProfileRightBar";
+import Rightbarhome from "../rightbarhome/Rightbarhome";
+
+const Rightbar = ({ profile }) => {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-       { profile? <ProfileRightBar/> :<RightBarHome/>} 
+        {profile ? <ProfileRightBar /> : <Rightbarhome/>}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Rightbar;

@@ -13,6 +13,7 @@
     .menuLinkTextName{
         font-weight: 700;
         font-style: 18px;
+        text-transform: capitalize;
     }
     &:hover{
         background-color: #011631;
