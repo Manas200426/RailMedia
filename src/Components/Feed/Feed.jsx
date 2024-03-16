@@ -23,7 +23,7 @@ const Feed = () => {
   return (
     <div className="feed">
       <div className="feedWrapper">
-        <Stories />
+        <Stories/>
         <Share />
         {posts
           .sort((a, b) => b.data.timestamp - a.data.timestamp)

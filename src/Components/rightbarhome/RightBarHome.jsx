@@ -17,7 +17,7 @@ const Rightbarhome = () => {
         </span>
       </div>
       <span className="birthdayText">
-          <b>Importent annoncements</b>
+          <b>Important Announcement</b>
         </span>
       <img src="/assets/ads/adv.jpg" alt="" className="rightbarAdvert" />
 

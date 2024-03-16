@@ -16,7 +16,7 @@ import { DarkModeContext } from "./../../Context/darkModeContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import { Link, useNavigate } from "react-router-dom";
-import { AirlineSeatReclineNormal, CurrencyRupee, HourglassBottom, Map, Train } from "@mui/icons-material";
+import { AirlineSeatReclineNormal, CurrencyRupee, HourglassBottom, LiveHelp, Map, Train } from "@mui/icons-material";
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
@@ -38,6 +38,9 @@ const Sidebar = () => {
         </span>
         <span onClick={() => navigate("/TrainDetails")}>
         <MenuLink Icon={<Train />} text="Search Train"/>
+        </span>
+        <span onClick={() => navigate("/LiveStatus")}>
+        <MenuLink Icon={<LiveHelp/>} text="LiveStatus"/>
         </span>
         
         <span onClick={() => dispatch({ type: "TOGGLE" })}>

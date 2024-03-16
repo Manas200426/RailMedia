@@ -25,6 +25,7 @@ import SeatAvailability from "./pages/SeatAvailability/SeatAvailability";
 import FareComponent from "./pages/FareComponent/FareComponent";
 import AuthorityRegister from "./pages/AuthorityRegister/AuthorityRegister";
 import ImageToggle from "./pages/StationMap/stationmap";
+import LiveTrainStatus from "./pages/LiveStatus/LiveStatus";
 
 function App() {
    const {darkMode} = useContext(DarkModeContext)
@@ -89,6 +90,10 @@ function App() {
     {
       path: "/StationMap",
       element: <ImageToggle />
+    },
+    {
+      path: "/LiveStatus",
+      element: <LiveTrainStatus/>
     }
    ])
    return <div className= {darkMode? "app dark" :"app"}>

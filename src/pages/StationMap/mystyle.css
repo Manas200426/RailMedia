@@ -4,18 +4,53 @@
     gap: 5px;
 }
 
-.button{
+.bttn{
     font-size:20px;
     border: 1px solid orangered;
+    color: brown;
     background-color: white;
     border-radius: 15px;
 }
-.button:hover{
+.bttn:hover{
     background:linear-gradient(90deg,orange,red);
     color: white;
+    box-shadow: 0 0 12px 0.5px grey;
 }
 
-.disp{
+.Desc{
+    font-size: 34px;
+}
+
+/* h1{
+    font-size: 72px;
+    background: -webkit-linear-gradient(violet,indigo,red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} */
+
+.tabbr{
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: large;
+}
+
+.flex{
     display: flex;
-    justify-content: center;
+}
+.ord{
+    order: 2;
+}
+#green{
+    color: rgb(7, 246, 7);
+}
+
+#light-green{
+    color: rgb(150, 246, 6);
+}
+
+#yellow{
+    color:rgb(232, 232, 20);
+}
+#dark-yellow{
+    color:rgb(154, 154, 7);
 }

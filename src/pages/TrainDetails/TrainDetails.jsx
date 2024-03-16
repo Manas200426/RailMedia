@@ -14,7 +14,7 @@ const TrainDetails = () => {
       const response = await fetch(`https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode=${fromStation}&toStationCode=${toStation}&dateOfJourney=${journeyDate}`, {
         method: 'GET',
         headers: {
-          'X-RapidAPI-Key': '292a569bd0msh55443dd10a5042fp174bb2jsn60aaf96c56f8',
+          'X-RapidAPI-Key': '322ad4d8e7msh5c30797c3c6b0d6p1c6ea7jsn692b9f86a23a',
           'X-RapidAPI-Host': 'irctc1.p.rapidapi.com'
         }
       });

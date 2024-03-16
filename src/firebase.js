@@ -6,12 +6,12 @@ import { getStorage } from "firebase/storage";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDHaHBKnzgp9ou7wM_ytd1EsJLejb2wPXI",
-  authDomain: "railmedia-e8586.firebaseapp.com",
-  projectId: "railmedia-e8586",
-  storageBucket: "railmedia-e8586.appspot.com",
-  messagingSenderId: "440834605723",
-  appId: "1:440834605723:web:3ca075a98b79f0799f7c3e"
+  apiKey: "AIzaSyCaizyS7qVJ0hZVSbdDgPRcLs6F9O7iY-A",
+  authDomain: "railmedia2.firebaseapp.com",
+  projectId: "railmedia2",
+  storageBucket: "railmedia2.appspot.com",
+  messagingSenderId: "519021914437",
+  appId: "1:519021914437:web:45e341ce18a954f8c2f62c"
 };
 
 // Initialize Firebase
