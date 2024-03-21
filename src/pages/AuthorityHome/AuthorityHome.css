@@ -1,0 +1,136 @@
+/* General styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Authority Home page */
+.authority-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin-top: 60px; /* Adjust margin top to avoid navbar overlap */
+}
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/react-toastify/8.0.0/react-toastify.css');
+
+.posts-list {
+  width: 80%;
+  margin-top: 20px;
+}
+
+.posts-list-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.posts-table-container {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.posts-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.posts-table th,
+.posts-table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+.posts-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.post-image {
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: cover;
+}
+
+.note-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.note-popup-content {
+  max-width: 400px;
+}
+
+.close-note {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.navbar {
+  background-color: #192a56; /* Dark navy blue background */
+  color: #fff; /* White text */
+  padding: 10px 0;
+  text-align: center;
+  font-size: 24px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+/* AuthorityHome.css */
+
+.view-analytics-btn {
+  display: inline-block;
+  width: auto; /* Set the width based on content */
+  padding: 8px 16px; /* Adjust padding as needed */
+  margin: 10px 0; /* Adjust margin as needed */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.view-analytics-btn:hover {
+  background-color: #0056b3;
+}

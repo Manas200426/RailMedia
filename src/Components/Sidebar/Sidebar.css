@@ -1,92 +1,99 @@
-.sidebar{
-    flex: 3;
-    height: calc(100vh - 50px);
-    position: sticky;
-    top: 50px;
-    overflow-y: scroll;
-
-    .sidebarWrapper{
-        padding: 20px;
-
-        .sidebarButton{
-          background-color: #011631;
-          color: aliceblue;
-          border-radius: 5px;
-          font-weight: 500;
-          padding: 10px;
-          margin: 20px;
-          width: 150px;
-          border: none;
-          cursor: pointer;
-        }
-        .sidebarHr{
-          margin: 10px 0;
-        }
-
-        .sidebarFriendList{
-          padding: 0;
-          margin: 0;
-          list-style: none;
-
-          
-        }
-    }
+/* Sidebar */
+.sidebar {
+  flex: 3;
+  height: calc(100vh - 50px);
+  position: sticky;
+  top: 50px;
+  overflow-y: scroll;
+  background-color: #002147; /* Indian Railways blue color */
+  color: #ffffff; /* White text */
+  font-family: Arial, sans-serif;
 }
 
-::-webkit-scrollbar{
-    width: 5px;
+/* Sidebar Wrapper */
+.sidebarWrapper {
+  padding: 20px;
 }
 
-::-webkit-scrollbar-track{
-    background-color: #f1f1f1;
+/* Sidebar Button */
+.sidebarButton {
+  background-color: #ff9933; /* Indian Railways saffron color */
+  color: #002147; /* Indian Railways blue color for text contrast */
+  border-radius: 5px;
+  font-weight: 500;
+  padding: 10px;
+  margin: 20px;
+  width: 150px;
+  border: none;
+  cursor: pointer;
 }
 
-::-webkit-scrollbar-thumb{
-    background-color: gray;
+.sidebarButton:hover {
+  background-color: #ffa64d; /* Lighter saffron color on hover */
 }
 
+/* Sidebar Horizontal Rule */
+.sidebarHr {
+  margin: 10px 0;
+  border: none;
+  border-top: 1px solid #ffffff; /* White border */
+}
 
+/* Sidebar Friend List */
+.sidebarFriendList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
 
-@media only screen and (max-width:992px){
-  .sidebar{
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #757575; /* Dark gray color for scrollbar thumb */
+}
+
+/* Media Queries */
+@media only screen and (max-width: 992px) {
+  .sidebar {
     flex: 1;
-    .sidebarWrapper{
+    background-color: #002147; /* Indian Railways blue color */
+    color: #ffffff; /* White text */
+    font-family: Arial, sans-serif;
+
+    .sidebarWrapper {
       padding: 17px;
+    }
 
-      .sidebarButton{
-        display: none;
-      }
-
-      .sidebarHr{
-        display: none;
-      }
+    .sidebarButton,
+    .sidebarHr {
+      display: none;
     }
   }
 
-  ::-webkit-scrollbar{
+  ::-webkit-scrollbar {
     display: none;
   }
-
-  ::-webkit-scrollbar-track{
-      display: none;
-  }
-
-  ::-webkit-scrollbar-thumb{
-      display: none;
-  }
 }
 
-@media only screen and (max-width:768px){
-  .sidebar{
+@media only screen and (max-width: 768px) {
+  .sidebar {
     display: block;
 
-    .sidebarWrapper{
+    .sidebarWrapper {
       padding: 3px;
     }
   }
 }
-@media only screen and (max-width:576px){
-  .sidebar{
+
+@media only screen and (max-width: 576px) {
+  .sidebar {
     display: none;
   }
 }

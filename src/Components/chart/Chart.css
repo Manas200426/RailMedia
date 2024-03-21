@@ -1,0 +1,24 @@
+/* chart.css */
+
+.chart-container {
+    position: relative;
+    margin: auto;
+    width: 80%;
+    height: 400px; /* Adjust height as needed */
+  }
+  
+  .chart-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Add additional styles as needed */
+  
+  @media screen and (max-width: 768px) {
+    .chart-container {
+      width: 100%;
+      height: 300px; /* Adjust height for smaller screens */
+    }
+  }
+  

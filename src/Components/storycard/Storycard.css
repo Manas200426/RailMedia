@@ -1,44 +1,62 @@
-.storyCard{
+/* Define Indian Railways color palette */
+:root {
+    --primary-color: #002147; /* Dark blue */
+    --secondary-color: #ff9933; /* Saffron */
+    --accent-color: #f1f1f1; /* Light gray */
+    --text-color: #333; /* Dark text color */
+    --border-color: #011631; /* Dark border color */
+  }
+  
+  /* Story Card Container */
+  .storyCard {
     position: relative;
     flex-basis: 15%;
     margin: 5px;
-
-
-   .storyProfile{
-       display: flex;
-       position: absolute;
-       height: 45px;
-       width: 45px;
-       border-radius: 50%;
-       top: 10px;
-       left: 10px;
-       border: 3px solid #0064e8;
-       object-fit: cover;
-   }
-   .storybackground{
-       width: 100%;
-       height: 220px;
-       border-radius: 10px;
-       object-fit: cover;
-       cursor: pointer;
-   } 
-   .storyadd{
-       position: absolute;
-       left: 50%;
-       color: #0047a3;
-       width: 43px;
-       bottom: 50px;
-       transform: translateX(-50%);
-       cursor: pointer;
-   } 
-   .text{
-       position: absolute;
-       width: 100%;
-       font-size: 14px;
-       font-weight: 500;
-       bottom: 10px;
-       text-align: center;
-       cursor: pointer;
-       color: #fff;
-   }
-}
+  }
+  
+  /* Story Profile */
+  .storyProfile {
+    display: flex;
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    top: 10px;
+    left: 10px;
+    border: 3px solid var(--secondary-color); /* Saffron border */
+    object-fit: cover;
+  }
+  
+  /* Story Background Image */
+  .storybackground {
+    width: 100%;
+    height: 220px;
+    border-radius: 10px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  
+  /* Story Add Button */
+  .storyadd {
+    position: absolute;
+    left: 50%;
+    color: var(--primary-color); /* Dark blue text color */
+    width: 43px;
+    bottom: 50px;
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+  
+  /* Text Overlay */
+  .text {
+    position: absolute;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff; /* White text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility */
+  }
+  

@@ -1,7 +1,6 @@
 import React from 'react'
 import "./Storycard.css"
 
-
 const Storycard = ({user}) => {
   return (
     <div className= "storyCard">

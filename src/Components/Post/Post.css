@@ -1,200 +1,220 @@
-.post{
-    width: 100%;
-    margin: 30px 0;
-    border-radius: 10px;
-    -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47);
-    box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
+/* Post Container */
+.post {
+  width: 100%;
+  margin: 30px 0;
+  border-radius: 10px;
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  background-color: #f1f1f1; /* Light gray background */
+  color: #333; /* Dark text color */
+  font-family: Arial, sans-serif;
+}
 
-    .postWrapper{
-        padding: 20px;
+/* Post Wrapper */
+.postWrapper {
+  padding: 20px;
+}
 
-        .postTop{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+/* Post Top Section */
+.postTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-            .postTopLeft{
-                display: flex;
-                align-items: center;
+.postTopLeft {
+  display: flex;
+  align-items: center;
+}
 
-                .postProfileImg{
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                    border: 2px solid #011631;
-                    cursor: pointer;
-                }
+.postProfileImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #011631; /* Indian Railways dark blue color */
+  cursor: pointer;
+}
 
-                .postUsername{
-                    font-size: 15px;
-                    font-weight: 800;
-                    margin: 0 10px;
-                    cursor: pointer;
-                }
+.postUsername {
+  font-size: 15px;
+  font-weight: 800;
+  margin: 0 10px;
+  cursor: pointer;
+}
 
-                .postDate{
-                    font-size: 12px;
-                }
-            }
+.postDate {
+  font-size: 12px;
+  margin-right: 5px; /* Added margin-right for spacing */
+}
 
-            .postTopRight{
-                .postVertButton{
-                    font-size: 30px;
-                    color: #333;
-                    cursor: pointer;
-                }
-            }
-        }
+.postCategory {
+  font-size: 12px;
+  margin-left: 10px; /* Added margin-left for spacing */
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #011631; /* Indian Railways dark blue color */
+  background-color: #fff; /* White background */
+  color: #011631; /* Indian Railways dark blue color */
+}
 
-        .postCenter{
-            margin: 20px 0;
+.postTopRight .postVertButton {
+  font-size: 30px;
+  color: #333; /* Dark text color */
+  cursor: pointer;
+}
 
-            .postImg{
-                width: 100%;
-                max-height: 500px;
-                object-fit: contain;
-                margin-top: 20px;
-                cursor: pointer;
-            }
-        }
+/* Post Center Section */
+.postCenter {
+  margin: 20px 0;
+}
 
-        .postBottom{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+.postImg {
+  width: 100%;
+  max-height: 300px; /* Adjusted image height */
+  object-fit: cover;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 10px; /* Rounded corners */
+}
 
-            .postBottomLeft{
-                display: flex;
-                align-items: center;
-                gap: 10px;
+/* Post Bottom Section */
+.postBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-                .bottomLeftIcon{
-                    font-size: 30px;
-                    cursor: pointer;
-                }
+.postBottomLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-                .postLikeCounter{
-                    font-size: 15px;
-                }
-            }
+.bottomLeftIcon {
+  font-size: 30px;
+  cursor: pointer;
+}
 
-            .postBottomRight{
-                .postCommentText{
-                    font-size: 15px;
-                    cursor: pointer;
-                }
-            }
-        }
+.postLikeCounter {
+  font-size: 15px;
+}
 
-        .footerHr{
-            margin: 10px 0;
-        }
+.postBottomRight .postCommentText {
+  font-size: 15px;
+  cursor: pointer;
+}
 
-        .postBottomFooter{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+/* Horizontal Rule */
+.footerHr {
+  margin: 10px 0;
+  border: none;
+  border-top: 1px solid #011631; /* Indian Railways dark blue color */
+}
 
-            .postBottomFooterItem{
-                display: flex;
-                align-items: center;
-                padding: 7px 14px;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: 0.5s;
+/* Post Bottom Footer Section */
+.postBottomFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-                .footerIcon{
-                    color: #333;
-                    font-size: 30px;
-                    margin-right: 10px;
-                }
+.postBottomFooterItem {
+  display: flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+}
 
-                .footerText{
-                    font-weight: 500;
-                }
-            }
-        }
+.footerIcon {
+  color: #333; /* Dark text color */
+  font-size: 30px;
+  margin-right: 10px;
+}
 
-        .postBottomFooterItem:hover{
-            background-color: rgba(0, 0, 0, 0.3);
-        }
-    }
+.footerText {
+  font-weight: 500;
+}
 
-    .commentBox{
-        display: flex;
+.postBottomFooterItem:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Light gray background on hover */
+}
 
-        .commentInput{
-            display: flex;
-            flex: 1;
-            width: 75%;
-            background: transparent;
-            color: black;
-            border: 1px solid #011631;
-            padding: 10px 5px 0px 5px;
-            margin: 0px 0px 20px 20px;
-            outline: none;
-        }
+/* Comment Box */
+.commentBox {
+  display: flex;
+}
 
-        .commentPost{
-            display: flex;
-            padding: 10px 25px;
-            background-color: #011631;
-            color: white;
-            font-size: 14px;
-            font-weight: 500;
-            margin: 0px 20px 20px 0px;
-            border: none;
-            cursor: pointer;
+.commentInput {
+  display: flex;
+  flex: 1;
+  width: 75%;
+  background: transparent;
+  color: black;
+  border: 1px solid #011631; /* Indian Railways dark blue color */
+  padding: 10px 5px 0px 5px;
+  margin: 0px 0px 20px 20px;
+  outline: none;
+}
 
-            &:disabled{
-                cursor: not-allowed;
-                background-color: #011631a4;
-            }
-        }
-    }
+.commentPost {
+  display: flex;
+  padding: 10px 25px;
+  background-color: #011631; /* Indian Railways dark blue color */
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0px 20px 20px 0px;
+  border: none;
+  cursor: pointer;
+}
 
-    .comment{
-        width: 100%;
-        max-height: 250px;
-        overflow-y: scroll;
+.commentPost:disabled {
+  cursor: not-allowed;
+  background-color: #011631a4; /* Darkened Indian Railways dark blue color */
+}
 
-        .commentWrapper{
-            display: flex;
-            align-items: center;
-            border-top: 1px dashed #011631;
-            width: 90%;
-            margin: auto;
+/* Comment Section */
+.comment {
+  width: 100%;
+  max-height: 250px;
+  overflow-y: scroll;
+}
 
-            .commentProfileImg{
-                display: flex;
-                margin: 20px 7px 20px 10px;
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-                border: 2px solid #011631;
-                object-fit: cover;
-                cursor: pointer;
-            }
+.commentWrapper {
+  display: flex;
+  align-items: center;
+  border-top: 1px dashed #011631; /* Indian Railways dark blue color */
+  width: 90%;
+  margin: auto;
+}
 
-            .commentInfo{
-                padding: 20px 0;
-                max-width: 80%;
+.commentProfileImg {
+  display: flex;
+  margin: 20px 7px 20px 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #011631; /* Indian Railways dark blue color */
+  object-fit: cover;
+  cursor: pointer;
+}
 
-                .commentUsername{
-                    font-weight: 600;
-                    cursor: pointer;
-                }
+.commentInfo {
+  padding: 20px 0;
+  max-width: 80%;
+}
 
-                .commentText{
-                    background-color: #011631;
-                    color: white;
-                    padding: 10px;
-                    margin-top: 3px;
-                    border-radius: 30px 30px 30px 30px;
-                }
-            }
-        }
-    }
+.commentUsername {
+  font-weight: 600;
+  cursor: pointer;
+}
 
+.commentText {
+  background-color: #011631; /* Indian Railways dark blue color */
+  color: white;
+  padding: 10px;
+  margin-top: 3px;
+  border-radius: 30px; /* Rounded border */
 }

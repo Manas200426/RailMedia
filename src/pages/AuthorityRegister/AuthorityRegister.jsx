@@ -1,83 +1,52 @@
-import React, { useState } from 'react'
-import "./AuthorityRegister.css"
-import { doc, setDoc } from "firebase/firestore";
-import { DriveFolderUploadOutlined } from '@mui/icons-material'
-import {  Link, useNavigate } from 'react-router-dom'
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import {auth, db, storage} from "../../firebase"
-import {  ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import React, { useState } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, db } from '../../firebase';
+import { useNavigate } from 'react-router-dom';
 
-const AuthorityRegister = () => {
-    const navigate = useNavigate()
-    const [error, setError] = useState(false);
+const AuthorityRegisterPage = () => {
+  const navigate = useNavigate();
+  const [error, setError] = useState('');
 
-    const handleAuthorityRegister = async (e) => {
-        e.preventDefault();
-        const authorityEmail = e.target[0].value;
-        const authorityPassword = e.target[1].value;
-        const station = e.target[2].value;
-
-        try {
-            const res = await createUserWithEmailAndPassword(auth, authorityEmail, authorityPassword);
-
-            await updateProfile(res.user, {
-                displayName: authorityEmail, 
-            });
-
-            await setDoc(doc(db, "Authority", res.user.uid), {
-                uid: res.user.uid,
-                email: authorityEmail,
-                station: station,
-            });
-            navigate("./AuthorityLogin"); 
-        } catch (error) {
-            setError(true);
-        }
-    };
-
+  const handleAuthorityRegister = async (e) => {
+    e.preventDefault();
+    const authorityEmail = e.target.elements.email.value;
+    const authorityPassword = e.target.elements.password.value;
+    const station = e.target.elements.station.value;
+  
+    try {
+      const res = await createUserWithEmailAndPassword(auth, authorityEmail, authorityPassword);
+  
+      await setDoc(doc(db, 'Authority', res.user.uid), {
+        uid: res.user.uid,
+        email: authorityEmail,
+        
+        station: station,
+      });
+  
+      navigate('/AuthorityLogin');
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        setError('Email is already in use. Please use a different email address.');
+      } else {
+        console.error('Error registering authority:', error);
+        setError('An error occurred while registering. Please try again.');
+      }
+    }
+  };
+  
   return (
     <div className='register'>
-    <div className="registerWrapper">
-        <div className="registerLeft">
-            <h3 className="registerLogo">RailMedia</h3>
-            <h3>(Authority Version)</h3>
-            <span className="registerDesc">
-                Solve Problems Together on ReailMedia!
-            </span>
-        </div>
-        <div className="registerRight">
-            <div className="registerBox">
-                
-                <div className="bottom">
-                    <form className="bottomBox" onSubmit={handleAuthorityRegister} >
-                    <input type="email"
-                    placeholder='Authority Email'
-                    className='registerInput'
-                    required />
-
-                <input type="password"
-                    placeholder='Password'
-                    className='registerInput'
-                    required />
-
-                <input type="text"
-                    placeholder='Station'
-                    className='registerInput'
-                    required />
-                        <button type="submit" className="registerButton">Sign Up</button>
-                        <Link to="/AuthorityLogin">
-                        <button className="loginRegisterButton">
-                            Log into Account
-                        </button>
-                        </Link>
-                        
-                    </form>
-                </div>
-            </div>
-        </div>
+      <h2>Authority Registration</h2>
+      <form onSubmit={handleAuthorityRegister}>
+        <input type='email' name='email' placeholder='Email' required />
+        <input type='password' name='password' placeholder='Password' required />
+        <input type='text' name='station' placeholder='Station' required />
+        <button type='submit'>Register</button>
+        {error && <p className='error'>{error}</p>}
+      </form>
     </div>
-</div>
-  )
-}
+  );
+};
 
-export default AuthorityRegister
+export default AuthorityRegisterPage;
