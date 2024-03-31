@@ -1,20 +1,20 @@
-import Home from "./pages/Home/Home"
-import "./App.css"
+import Home from "./pages/Home/Home";
+import "./App.css";
 import Profile from "./pages/Profile/Profile";
 import EditProfile from "./pages/editProfile/EditProfile";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
-import Notification from "./pages/Notification/Notification"
+import Notification from "./pages/Notification/Notification";
 import {
-    BrowserRouter,
-    Link,
-    Navigate,
-    Route,
-    RouterProvider,
-    Routes,
-    createBrowserRouter
-  } from "react-router-dom";
-  import "./style/dark.css"
+  BrowserRouter,
+  Link,
+  Navigate,
+  Route,
+  RouterProvider,
+  Routes,
+  createBrowserRouter,
+} from "react-router-dom";
+import "./style/dark.css";
 import { useContext } from "react";
 import { DarkModeContext } from "./Context/darkModeContext";
 import { AuthContext } from "./Context/AuthContext";
@@ -27,84 +27,105 @@ import FareComponent from "./pages/FareComponent/FareComponent";
 import AuthorityRegister from "./pages/AuthorityRegister/AuthorityRegister";
 import ImageToggle from "./pages/StationMap/stationmap";
 import LiveTrainStatus from "./pages/LiveStatus/LiveStatus";
+import Chatbot from "./Components/Chatbot/Chatbot.jsx"
+import ContextProvider from "./Context/chatbotContext.js";
 
 function App() {
-   const {darkMode} = useContext(DarkModeContext)
-   const {currentUser}= useContext(AuthContext)
+  const { darkMode } = useContext(DarkModeContext);
+  const { currentUser } = useContext(AuthContext);
 
-   const AuthRoute = ({children})=>{
-    if(!currentUser){
-      return <Navigate to="/login"/>
+  const AuthRoute = ({ children }) => {
+    if (!currentUser) {
+      return <Navigate to="/login" />;
     }
-    return children
-   }
+    return children;
+  };
 
-   const router = createBrowserRouter([
+  const router = createBrowserRouter([
     {
       path: "/login",
-      element: <Login/>
+      element: <Login />,
     },
     {
       path: "/register",
-      element: <Register/>
+      element: <Register />,
     },
     {
       path: "/",
-      element:<AuthRoute>  <Home/> </AuthRoute>
+      element: (
+        <AuthRoute>
+          {" "}
+          <Home />{" "}
+        </AuthRoute>
+      ),
     },
     {
       path: "/profile/:username",
-      element:<AuthRoute>  <Profile/>  </AuthRoute>
+      element: (
+        <AuthRoute>
+          {" "}
+          <Profile />{" "}
+        </AuthRoute>
+      ),
     },
     {
       path: "/profile/:username/edit",
-      element:  <AuthRoute><EditProfile/></AuthRoute>
+      element: (
+        <AuthRoute>
+          <EditProfile />
+        </AuthRoute>
+      ),
     },
     {
       path: "/AuthorityLogin",
-      element: <AuthorityLogin/>
+      element: <AuthorityLogin />,
     },
     {
       path: "/AuthorityHome",
-      element: <AuthorityHome/>
+      element: <AuthorityHome />,
     },
     {
       path: "/TrainPNRStatus",
-      element: <TrainPNRStatus/>
+      element: <TrainPNRStatus />,
     },
     {
       path: "/TrainDetails",
-      element: <TrainDetails/>
+      element: <TrainDetails />,
     },
     {
       path: "/SeatAvailability",
-      element: <SeatAvailability/>
+      element: <SeatAvailability />,
     },
     {
       path: "/FareComponent",
-      element: <FareComponent/>
+      element: <FareComponent />,
     },
     {
       path: "/AuthorityRegister",
-      element: <AuthorityRegister />
+      element: <AuthorityRegister />,
     },
     {
       path: "/StationMap",
-      element: <ImageToggle />
+      element: <ImageToggle />,
     },
     {
       path: "/LiveStatus",
-      element: <LiveTrainStatus/>
+      element: <LiveTrainStatus />,
     },
     {
       path: "/Notifications",
-      element: <Notification/>
-    }
-   ])
-   return <div className= {darkMode? "app dark" :"app"}>
-    <RouterProvider router={router}/>
+      element: <Notification />,
+    },
+    {
+      path: "/chatbot",
+      element: <ContextProvider><Chatbot/></ContextProvider>
+    },
+  ]);
+  return (
+    <div className={darkMode ? "app dark" : "app"}>
+      <RouterProvider router={router} />
     </div>
-
+  );
 }
 
 export default App;

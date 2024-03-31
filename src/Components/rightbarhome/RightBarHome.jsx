@@ -1,9 +1,9 @@
 import React from "react";
-import Online from "../online/Online";
 import { Usersonline } from "../../data";
+import Online from "../online/Online";
 import "./RightBarHome.css";
 
-const Rightbarhome = () => {
+const RightBarhome = () => {
   return (
     <div className="rightbarhome">
       <div className="birthdayContainer">
@@ -32,4 +32,4 @@ const Rightbarhome = () => {
   );
 };
 
-export default Rightbarhome;
+export default RightBarhome;
