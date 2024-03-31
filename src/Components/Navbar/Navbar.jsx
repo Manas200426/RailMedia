@@ -42,8 +42,9 @@ const Navbar = () => {
               <span className="navbarIconBadge">10</span>
             </div>
             <div className="navbarIconItem">
-              <NotificationsActiveIcon />
+              
               <span className="navbarIconBadge">8</span>
+              <Link to="/notifications" className="navbarLink"><NotificationsActiveIcon /></Link>
             </div>
           </div>
           <Link to={`/profile/${currentUser.displayName}`}>

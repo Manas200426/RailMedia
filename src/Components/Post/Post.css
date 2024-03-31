@@ -57,6 +57,17 @@
   color: #011631; /* Indian Railways dark blue color */
 }
 
+.postStation {
+  font-size: 12px;
+  margin-left: auto; /* Move station selection to extreme right */
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #011631; /* Indian Railways dark blue color */
+  background-color: #fff; /* White background */
+  color: #011631; /* Indian Railways dark blue color */
+  width: 100px; /* Fixed width for the dropdown menu */
+}
+
 .postTopRight .postVertButton {
   font-size: 30px;
   color: #333; /* Dark text color */

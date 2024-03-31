@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { IconButton } from '@mui/material';
+import { IconButton , MenuItem , Select} from '@mui/material';
 import { ChatBubbleOutline, Favorite, MoreVert, ThumbUp, ThumbUpAltOutlined } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import Timeago from 'react-timeago';
@@ -18,6 +18,7 @@ const Post = ({ post }) => {
   const [commentBoxVisible, setCommentBoxVisible] = useState(false);
   const [status, setStatus] = useState('Incomplete'); // Default status
   const [category, setCategory] = useState('Uncategorized');
+  const [station, setStation] = useState('Kalyan'); // Default station
 
   const { currentUser } = useContext(AuthContext);
 
@@ -35,6 +36,7 @@ const Post = ({ post }) => {
     const unSubStatus = onSnapshot(doc(db, 'posts', post.id), snapshot => {
       setStatus(snapshot.data()?.status || 'Incomplete');
       setCategory(snapshot.data()?.category || 'Uncategorized');
+      setStation(snapshot.data()?.station || 'Kalyan'); // Set station from Firestore
     });
 
     return () => {
@@ -87,6 +89,28 @@ const Post = ({ post }) => {
     });
   };
 
+  const handleStationChange = e => {
+    const newStation = e.target.value;
+    setStation(newStation);
+    // Update the station in Firestore
+    updateDoc(doc(db, 'posts', post.id), {
+      station: newStation,
+    });
+  };
+
+  const handlePost = async () => {
+    // Add the station tag to the post input
+    const postInputWithStation = `${input} #${station}`;
+    await addDoc(collection(db, 'posts'), {
+      input: postInputWithStation,
+      station: station,
+      category: category,
+      photoURL: currentUser.photoURL,
+      timestamp: serverTimestamp(),
+    });
+    setInput('');
+  };
+
   return (
     <div className='post'>
       <div className='postWrapper'>
@@ -106,12 +130,14 @@ const Post = ({ post }) => {
               <option value='Infrastructure'>Infrastructure</option>
               {/* Add more options as needed */}
             </select>
+            <select className='postStation' value={station} onChange={handleStationChange}>
+              <option value='Kalyan'>Kalyan</option>
+              <option value='Thane'>Thane</option>
+              <option value='Mumbai'>Mumbai</option>
+              {/* Add more station options as needed */}
+            </select>
           </div>
-          <div className='postTopRight'>
-            <IconButton>
-              <MoreVert className='postVertButton' />
-            </IconButton>
-          </div>
+          
         </div>
         <div className='postCenter'>
           <span className='postText'>{post.data.input}</span>
@@ -189,4 +215,4 @@ const Post = ({ post }) => {
   );
 };
 
-export default Post
+export default Post;

@@ -4,6 +4,7 @@ import Profile from "./pages/Profile/Profile";
 import EditProfile from "./pages/editProfile/EditProfile";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
+import Notification from "./pages/Notification/Notification"
 import {
     BrowserRouter,
     Link,
@@ -94,6 +95,10 @@ function App() {
     {
       path: "/LiveStatus",
       element: <LiveTrainStatus/>
+    },
+    {
+      path: "/Notifications",
+      element: <Notification/>
     }
    ])
    return <div className= {darkMode? "app dark" :"app"}>
