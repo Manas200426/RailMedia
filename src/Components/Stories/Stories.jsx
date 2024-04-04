@@ -1,27 +1,34 @@
-import React, { useContext } from 'react'
-import "./stories.css"
-import Storycard from '../storycard/Storycard'
-import {Users} from "../../data"
-import { AuthContext } from '../../Context/AuthContext'
+import React, { useState, useEffect } from 'react';
+import "./stories.css";
 
-const Stories = () => {
-  const { currentUser } = useContext(AuthContext);
+const Slider = () => {
+  const [index, setIndex] = useState(0);
+  const texts = [
+      'Mumbai Best bus will run on Atal Setu from March 14',
+      'MMRCL begins integrated trial run on Line 3',
+      "Mumbai's BATMAN squad, the night TC's squad",
+      'CM announces Combined transport Service for Kalyan-Bhiwandi',
+      'Mumbai North-South connector opened at kanjurmarg'
+    ];
 
-  return (
-    <div className="stories">
-      <div className="storyCard">
-        <div className="overlay"></div>
-        <img src={currentUser.photoURL} alt="" className="storyProfile" />
-        <img src={currentUser.photoURL} alt="" className="storybackground" />
-        <img src="/assets/person/upload.png" alt="" className="storyadd" />
-        <span className="text">{currentUser.displayName}</span>
-      </div>
+  const slider = () => {
+    if (index < texts.length - 1) {
+      setIndex(index + 1);
+    } else {
+      setIndex(0);
+    }
+  };
 
-      {Users.map((u) => (
-        <Storycard key={u.id} user={u} />
-      ))}
+  useEffect(() => {
+    const interval = setInterval(slider, 3000);
+    return () => clearInterval(interval);
+  }, [index]);
+
+  return <div className='outercarousal'>
+    <div className='carousal'>
+    {texts[index]}
     </div>
-  );
+    </div>;
 };
 
-export default Stories
+export default Slider;
